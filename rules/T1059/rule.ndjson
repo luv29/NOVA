@@ -1,0 +1,20 @@
+{
+    "rule_id":"autoit-script-execution-suspicious-parent",
+    "name":"AutoIt Script Execution from Suspicious Parent Process",
+    "description":"Detects AutoIt3.exe being launched from scripting interpreters like PowerShell or CMD, often used for malicious script execution or living-off-the-land attacks. This pattern was observed in Atomic Red Team testing.",
+    "risk_score":73,
+    "severity":"high",
+    "type":"eql",
+    "language":"eql",
+    "index":["winlogbeat-*"],
+    "query":"any where event.action == \"Process Create (rule: ProcessCreate)\" and winlog.event_data.Image : \"*AutoIt3.exe\" and winlog.event_data.ParentImage : (\"*\\\\powershell.exe\", \"*\\\\cmd.exe\", \"*\\\\wscript.exe\", \"*\\\\cscript.exe\", \"*\\\\mshta.exe\") and winlog.event_data.CommandLine : \"*.au3*\"","author":["Security Operations"],
+    "false_positives":[
+        "Legitimate AutoIt automation scripts",
+        "Software deployment tools using AutoIt"
+    ],
+    "tags":["Windows","Execution","Defense Evasion","Sysmon"],
+    "enabled":true,
+    "interval":"1m",
+    "from":"now-2m",
+    "max_signals":100
+}

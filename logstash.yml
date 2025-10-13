@@ -1,0 +1,5 @@
+path.settings: /usr/share/logstash/config
+xpack.monitoring.elasticsearch.hosts: http://elasticsearch:9200
+xpack.monitoring.elasticsearch.password: MyS3cretPassw0rd
+xpack.monitoring.elasticsearch.username: elastic
+xpack.monitoring.enabled: true

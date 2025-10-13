@@ -1,0 +1,6 @@
+server.host: "0.0.0.0"
+elasticsearch.hosts: ["http://elasticsearch:9200"]
+xpack.encryptedSavedObjects.encryptionKey: "supersecretkey12345678901234567890"
+elasticsearch.username: "elastic"
+elasticsearch.password: "MyS3cretPassw0rd"
+# xpack.security.authc.api_key.enabled: true
